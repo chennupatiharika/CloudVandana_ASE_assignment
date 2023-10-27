@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Customer Survey Form</title>
+	<style>
+		.div
+		{
+            padding-top: 30px;
+		}
+		#div1
+		{
+	      background:blue;
+	      color: white;
+	      width: 700px;
+	      height: 690px;
+	      margin: 120px auto;
+        }
+		
+		#myform
+		{
+	         background:white;
+	         width: 500px;
+	         height: 500px;
+	         margin: 30px 30px 30px 90px;
+	         border: 10px solid white;
+              	color: black;
+	         font-size: 100%;
+       }
+       .h1
+       {
+       	padding-top: 20px;
+       }
+       .formdiv
+       {
+       	padding-bottom: 15px;
+       }
+       form span {
+            color: red;
+        }
+	</style>
+</head>
+<body >
+<div id="div1">
+	<!-- <div class=" text-center text-white">
+		<h2>Customer Survey Form</h2>
+	</div> -->
+    <h1 class = "h1" align="center">Customer survey form</h1>
+	<div class="formdiv">
+	<form id="myform" action="" method="POST"> 
+        <fieldset>
+		<table>
+		<tr>
+			<td><label for="">Name</label></td>
+			<td><label for="">Email</label></td>
+		</tr>
+		<tr><td><input  type="text" name="fname"> <span id="fname" > </span></input></td>
+			<td><input  type="text" name="email"> <span id="email" > </span></input></td>
+		</tr>
+		</table>
+
+			<div class="div ">
+				<label>Is this first time you are using products & services? </label>
+				<div>
+				<input type="radio" name="rr"> Yes</input>
+				<input type="radio" name="rr"> No</input>
+				<span id="firsttime" required></span>
+			    </div>
+			</div>
+			<div class="div">
+				<label>Would you suggest to your friends and colleagues? </label>
+				<div>
+				<input type="radio" name="nn"> Yes</input>
+				<input type="radio" name="nn"> No</input>
+				<span id="suggest" required></span>
+			    </div>
+			</div>
+		
+			<div class="div">
+				<label for="">How satisfied are you with our company overall? </label>
+				<div>
+				<input type="radio" name="mm" value="satisfied">Satisfied</input>
+				<input type="radio" name="mm" value="Undecided">Undecided</input>
+				<input type="radio" name="mm" value="Unsatisfied">Unsatisfied</input>
+				<span id="satisfaction" required></span>
+			    </div>
+			</div>
+			<div class="div">
+				<label>Do you have suggestion to improve our service?</label>
+				<div>
+				<textarea rows="4" cols="50" id="textarea"></textarea>
+				<span id="suggestion" required></span>
+			    </div>
+			</div>
+			<div class="div ">
+				<button type="submit" style="background-color:blue; color:white;"   >Submit</button>
+			</div>
+			</fieldset>
+		</form>	
+		</div>
+		</div>
+	</div>
+	<script >
+		let inputname = document.getElementById("name");
+		let inputmail = document.getElementById("email");
+		let form = document.getElementById("myform");
+
+   
+		  
+        // console.log(form);
+        let userDetails = {}
+        form.addEventListener("input", (e) => {
+            // console.log(e.target.value);
+            // console.log(e.target.name);
+            let name = e.target.name;
+            let value = e.target.value
+            userDetails[name] = value
+            console.log(userDetails);
+        })
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let error = false
+            console.log(e.target);
+            if (!userDetails.fname || userDetails.fname.length < 4) {
+                error = true
+                document.getElementById("fname").innerText = "* fisrt name is not valid"
+            }
+            if (!userDetails.email ||userDetails.email.length < 4 ) {
+                error = true
+                document.getElementById("email").innerText = "* email is not valid"
+            }
+
+
+            validateForm();
+            function validateForm() {
+            var radios = document.getElementsByName("rr");
+            var formValid = false;
+
+            var i = 0;
+            while (!formValid && i < radios.length) {
+            if (radios[i].checked) formValid = true;
+            i++;        
+            }
+
+           if (!formValid)  document.getElementById("firsttime").innerText = "* field is mandatatory";
+  
+           }
+            validateForm1();
+            function validateForm1() {
+            var radios = document.getElementsByName("nn");
+            var formValid = false;
+
+            var i = 0;
+            while (!formValid && i < radios.length) {
+            if (radios[i].checked) formValid = true;
+            i++;        
+            }
+
+           if (!formValid)  document.getElementById("suggest").innerText = "* field is mandatatory";
+  
+           }
+           validateForm2();
+            function validateForm2() {
+            var radios = document.getElementsByName("mm");
+            var formValid = false;
+
+            var i = 0;
+            while (!formValid && i < radios.length) {
+            if (radios[i].checked) formValid = true;
+            i++;        
+            }
+
+           if (!formValid)  document.getElementById("satisfaction").innerText = "* field is mandatatory";
+  
+           }
+          
+           
+            if (!error) {
+                window.location.href = "./submitted.html"
+            }
+        })
+         
+		
+	</script>
+
+</body>
+</html>
