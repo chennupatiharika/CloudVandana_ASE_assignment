@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sorting in descending order</title>
+</head>
+<body>
+<script >
+	let a = [10,20,30,5];
+	function sort(a)
+	{ 
+		for(let j=0;j<a.length-1;j++)
+		{
+		for(let i=0;i<a.length;i++)
+		{
+			if(a[i]<a[i+1]){
+				let temp = a[i];
+				a[i]=a[i+1];
+				a[i+1] = temp;
+			}
+		}
+	}
+	}
+	sort(a);
+    console.log(a);
+</script>
+</body>
+</html>
