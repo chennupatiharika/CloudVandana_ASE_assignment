@@ -88,7 +88,7 @@
 			<div class="div">
 				<label>Do you have suggestion to improve our service?</label>
 				<div>
-				<textarea rows="4" cols="50" id="textarea"></textarea>
+				<textarea rows="4" cols="50" name ="textarea"></textarea>
 				<span id="suggestion" required></span>
 			    </div>
 			</div>
@@ -101,13 +101,10 @@
 		</div>
 	</div>
 	<script >
-		let inputname = document.getElementById("name");
-		let inputmail = document.getElementById("email");
 		let form = document.getElementById("myform");
 
    
-		  
-        // console.log(form);
+		 // console.log(form);
         let userDetails = {}
         form.addEventListener("input", (e) => {
             // console.log(e.target.value);
@@ -173,6 +170,11 @@
            if (!formValid)  document.getElementById("satisfaction").innerText = "* field is mandatatory";
   
            }
+            if (!userDetails.textarea ||userDetails.textarea.length < 2 ) {
+                error = true
+                document.getElementById("suggestion").innerText = "*  suggestions are mandatatory or invalid suggestions"
+            }
+
           
            
             if (!error) {
